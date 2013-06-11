@@ -1,5 +1,4 @@
-
-angular-swipe
+angularjs-swipe
 ==================
 
 It is AngularJS Directive based on [ Brad's Swipe](https://github.com/bradbirdsall/Swipe)
