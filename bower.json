@@ -1,0 +1,10 @@
+{
+  "name": "angularjs-swipe",
+  "version": "0.0.1",
+  "main":[ "swipe.js", "swiper.js"],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
