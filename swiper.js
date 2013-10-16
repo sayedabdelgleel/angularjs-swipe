@@ -16,19 +16,30 @@ angular.module('swiper', [])
       if ( attrs.speed ) {
         config.speed = parseInt(attrs.speed,10);
       }
-      if ( attrs.onSlideEnd ) {
-        var onSlideEnd = $parse(attrs.onSlideEnd);
-        config.callback = function(e, index, slide) {
-          scope.$apply(function() {
-            onSlideEnd(scope, { index: index, slide: slide});
-          });
+        var onSlideEnd;
+        if (attrs.onSlideEnd)
+            onSlideEnd = $parse(attrs.onSlideEnd);
+    
+        config.callback = function (e, index, slide)
+        {
+            // apply with timeout to avoid stuttering transitions
+            $timeout(
+                    function ()
+                    {
+                        // always apply to propagate swipes status change to angular
+                        if (onSlideEnd)
+                            onSlideEnd(scope,
+                                    { index: index, slide: slide});
+                    }, 10
+            );
         };
-      }
 
       var swiperProperty = attrs.swiper || 'swiper';
-      var swiper = new Swipe(element[0], config);
-
-      scope[swiperProperty] = swiper;
+      $timeout(function ()
+      {
+        var swiper = new Swipe(element[0], config);
+        scope[swiperProperty] = swiper;
+      });
     }
-  };
+  }
 });
