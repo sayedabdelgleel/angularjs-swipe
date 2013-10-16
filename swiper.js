@@ -1,5 +1,5 @@
 angular.module('swiper', [])
-.directive('swiper', function ($parse) {
+.directive('swiper', function ($parse, $timeout) {
   return {
     scope: true,
     link: function(scope, element, attrs) {
