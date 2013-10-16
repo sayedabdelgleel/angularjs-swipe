@@ -37,8 +37,8 @@ angular.module('swiper', [])
       var swiperProperty = attrs.swiper || 'swiper';
       $timeout(function ()
       {
-        var swiper = new Swipe(element[0], config);
-        scope[swiperProperty] = swiper;
+          var setter = $parse(swiperProperty).assign;
+          setter(scope, new Swipe(element[0], config));
       });
     }
   }
