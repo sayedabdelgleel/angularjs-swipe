@@ -10,15 +10,19 @@ angular.module('swiper', [])
       if ( attrs.auto ) {
         config.auto = parseInt(attrs.auto,10);
       }
+      if ( attrs.continuous ) {
+        config.continuous = true;
+      }
       if ( attrs.startSlide ) {
         config.startSlide = parseInt(attrs.startSlide,10);
       }
       if ( attrs.speed ) {
         config.speed = parseInt(attrs.speed,10);
       }
-      if ( attrs.onSlideEnd ) {
-        var onSlideEnd = $parse(attrs.onSlideEnd);
-        config.callback = function(e, index, slide) {
+
+      if ( attrs.onslideend ) {
+        var onSlideEnd = $parse(scope[attrs.onslideend]);
+        config.callback = function(index, slide) {
           scope.$apply(function() {
             onSlideEnd(scope, { index: index, slide: slide});
           });
