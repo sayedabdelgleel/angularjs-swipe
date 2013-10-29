@@ -10,6 +10,9 @@ angular.module('swiper', [])
       if ( attrs.auto ) {
         config.auto = parseInt(attrs.auto,10);
       }
+      if ( attrs.continuous ) {
+        config.continuous = true;
+      }
       if ( attrs.startSlide ) {
         config.startSlide = parseInt(attrs.startSlide,10);
       }
